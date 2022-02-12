@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const crewMemberRouter = require("./CrewMember");
+const crewMemberRouter = require("./crewMember");
 const dbRouter = require("./db");
 const movieRouter = require("./movie");
 

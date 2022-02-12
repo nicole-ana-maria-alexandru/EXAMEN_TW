@@ -26,12 +26,13 @@ function EditCrewMember({ movieList, setCrewMemberList, crewMemberList }) {
       movieId: movie,
     };
 
+    if (nume && rol && movie) {
       try {
         const response = await patch(`/crewMember/${id}`, { ...crewMember });
         if (response.status === 200) {
           setCrewMemberList((value) => {
             let newCrewMembers = crewMemberList.filter((v) => v.id != id);
-            newCrewMembers = [...newCrewMembers, response.data.crewMember];
+            newCrewMembers = [...newCrewMembers, response.data.crew_member];
             return newCrewMembers;
           });
           navigate("/crewMembers");
@@ -42,7 +43,10 @@ function EditCrewMember({ movieList, setCrewMemberList, crewMemberList }) {
         alert("Invalid");
         console.log(error);
       }
+    }
 
+  }
+  
   return (
     <Box textAlign="center" marginBottom="2em" marginTop="1em">
       <Heading color="blue.200">Edit Crew Member</Heading>
@@ -77,5 +81,5 @@ function EditCrewMember({ movieList, setCrewMemberList, crewMemberList }) {
     </Box>
   );
 }
-}
+
 export default EditCrewMember;
